@@ -41,6 +41,7 @@ jobs:
         host: ${{ secrets.DOCKER_HOST }}
         username: ${{ secrets.DOCKER_USERNAME }}
         key: ${{ secrets.DOCKER_SSH_KEY }}
+         port: 22
         script: |
           cd /path-to-your-docker-compose
           git pull origin main
