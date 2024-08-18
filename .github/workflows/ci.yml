@@ -32,17 +32,10 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Setup SSH key
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.DOCKER_SSH_KEY }}
-
-    - name: Deploy to Docker Host
+    - name: Deploy to Docker
       uses: appleboy/ssh-action@v0.1.6
       with:
         host: ${{ secrets.DOCKER_HOST }}
